@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.device.ScanManager;
 import android.device.scanner.configuration.PropertyID;
+import android.device.scanner.configuration.Triggering;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -70,6 +71,7 @@ public class scanPda extends CordovaPlugin
     try
     {
       scanManager.openScanner();
+      scanManager.setTriggerMode(Triggering.CONTINUOUS);
     }
     catch (Exception e)
     {
