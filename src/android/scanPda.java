@@ -30,7 +30,7 @@ public class scanPda extends CordovaPlugin
   public boolean execute(String action, JSONArray args,
                          CallbackContext callbackContext) throws JSONException
   {
-    if (action.equals("coolMethod"))
+    if (action.equals("handleScanResult"))
     {
       String message = args.getString(0);
       if (TextUtils.isEmpty(message))
@@ -112,7 +112,7 @@ public class scanPda extends CordovaPlugin
           int barcodelen = intent.getIntExtra("length", 0);
           byte temp = intent.getByteExtra("barcodeType", (byte) 0);
           String barcodeStr = new String(barcode, 0, barcodelen);
-          coolMethod(barcodeStr, callbackContext);
+          handleScanResult(barcodeStr, callbackContext);
         }
       };
       activity.registerReceiver(mScanReceiver, filter);
@@ -136,7 +136,7 @@ public class scanPda extends CordovaPlugin
       }
   }
 
-  private void coolMethod(String message, CallbackContext callbackContext)
+  private void handleScanResult(String message, CallbackContext callbackContext)
   {
     if (!TextUtils.isEmpty(message))
     {
