@@ -72,6 +72,7 @@ public class scanPda extends CordovaPlugin
     {
       scanManager.openScanner();
       scanManager.setTriggerMode(Triggering.CONTINUOUS);
+      scanManager.startDecode();
     }
     catch (Exception e)
     {
